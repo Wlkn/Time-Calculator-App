@@ -4,7 +4,7 @@ import Screen from "./components/Screen.js";
 import Wrapper from "./components/Wrapper.js";
 
 const btnValues = [
-    ["C", "+-", "%", "/"],
+    ["H", "M", "S", "/"],
     [7, 8, 9, "X"],
     [4, 5, 6, "-"],
     [1, 2, 3, "+"],
@@ -20,7 +20,7 @@ function App() {
                     return (
                         <Button
                             key={i}
-                            className={btn === "=" ? "equals" : ""}
+                            className={btn === 0 ? "zero" : "" || btn === "=" ? "equals" : ""}
                             value={btn}
                             onClick={() => {
                                 console.log(`${btn} clicked!`);

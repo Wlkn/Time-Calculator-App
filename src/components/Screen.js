@@ -3,10 +3,14 @@ import useFitText from "use-fit-text";
 import "./Screen.css";
 
 function Screen({ value }) {
-    const { fontSize, ref } = useFitText();
+    const { fontSize, ref } = useFitText({minFontSize: 100});
 
     return (
-        <div ref={ref} style={{ fontSize, minFontSize: 500 }}>
+        <div
+            className="screen"
+            ref={ref}
+            style={{ fontSize, height: 100, border: "1px solid #ccc" }}
+        >
             {value}
         </div>
     );
