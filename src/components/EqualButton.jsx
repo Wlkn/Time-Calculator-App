@@ -1,13 +1,16 @@
 import Button from "./Button";
 
 export default function EqualButton() {
+    const handleBtnClick = () => {
+        console.log("=");
+    };
     return (
         <Button
             className="equal-btn"
             value={"="}
             key={"="}
             onClick={() => {
-                console.log(`equal button clicked`)
+                handleBtnClick();
             }}
         ></Button>
     );

@@ -29,7 +29,7 @@ function App() {
     return (
         <CalcProvider>
             <Wrapper>
-                <Screen value={0} />
+                <Screen/>
                 <ButtonBox>
                     {btnValues.flat().map((btn) => {
                         return btn;
