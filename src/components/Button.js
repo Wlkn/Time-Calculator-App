@@ -1,11 +1,11 @@
 import "./Button.css";
 
-const Button = ({ className, value, onClick }) => {
+function Button({ className, value, onClick }) {
     return (
-        <button className={className} onClick={onClick}>
+        <div className={[className, "btn"].join(" ")} onClick={onClick}>
             {value}
-        </button>
+        </div>
     );
-};
+}
 
 export default Button;

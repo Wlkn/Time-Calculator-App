@@ -1,4 +1,4 @@
-button {
+.btn {
     border: none;
     background-color: #6592fd;
     font-size: 24px;
@@ -7,19 +7,32 @@ button {
     cursor: pointer;
     border-radius: 10px;
     outline: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button:hover {
+.btn:hover {
     background-color: #5f59f7;
 }
-.zero {
+
+.zero-btn {
     grid-column: 1 / 3;
 }
 
-.equals {
-    background-color: rgb(243, 61, 29);
+.number-btn {
+    background-color: rgb(47, 174, 174);
 }
 
-.equals:hover {
-    background-color: rgb(228, 39, 15);
+.operator-btn {
+    background-color: rgb(110, 174, 47);
+}
+
+.time-btn {
+    background-color: rgb(171, 82, 219);
+}
+
+.equal-btn {
+    background-color: rgb(218, 99, 90);
 }
