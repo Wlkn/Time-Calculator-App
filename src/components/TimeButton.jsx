@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-export default function TimeButton({ value }) {
+export default function TimeButton({ value, setLastUsedBtnState }) {
     const handleBtnClick = () => {
         console.log(value);
     };

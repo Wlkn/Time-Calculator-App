@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-export default function EqualButton() {
+export default function EqualButton({setScreenState, setLastUsedBtnState}) {
     const handleBtnClick = () => {
         console.log("=");
     };
@@ -10,7 +10,9 @@ export default function EqualButton() {
             value={"="}
             key={"="}
             onClick={() => {
-                handleBtnClick();
+                setScreenState(state => {
+                    return eval(state.replaceAll('×', '*'))
+                });
             }}
         ></Button>
     );
