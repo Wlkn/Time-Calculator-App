@@ -15,7 +15,7 @@ function stringTimeToSeconds(string) {
         seconds = string;
     }
 
-    return parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseInt(seconds);
+    return parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseFloat(seconds);
 }
 
 function evalBigTimeEquation(string) {
@@ -24,13 +24,20 @@ function evalBigTimeEquation(string) {
 
     for (let i = 0; i < members.length; i++) {
         if (members[i] === "÷" && [members[i + 1], members[i - 1]].every(e => e.includes(":"))) {
-            members[i - 1] = String(stringTimeToSeconds(members[i - 1]) / stringTimeToSeconds(members[i + 1]));
+            members[i - 1] = String(
+                roundToNDecimals(
+                    stringTimeToSeconds(members[i - 1]) / stringTimeToSeconds(members[i + 1]),
+                    3
+                )
+            );
             members.splice(i, 2);
             i--;
         }
     }
 
-    let membersInSec = members.map(e => (/\+|-|÷|×/g.test(e) ? e : stringTimeToSeconds(e))).join(" ");
+    let membersInSec = members
+        .map(e => (/\+|-|÷|×/g.test(e) ? e : stringTimeToSeconds(e)))
+        .join(" ");
 
     members = members.join(" ");
 
@@ -51,8 +58,8 @@ function evalBigTimeEquation(string) {
 }
 
 function convertSecondsToHHMMSS(seconds) {
-    if(seconds < 0) return "-" + convertSecondsToHHMMSS(-seconds);
-    
+    if (seconds < 0) return "-" + convertSecondsToHHMMSS(-seconds);
+
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = roundToNDecimals(seconds % 60, 3);
