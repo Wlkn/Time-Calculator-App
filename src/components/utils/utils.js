@@ -51,6 +51,8 @@ function evalBigTimeEquation(string) {
 }
 
 function convertSecondsToHHMMSS(seconds) {
+    if(seconds < 0) return "-" + convertSecondsToHHMMSS(-seconds);
+    
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = roundToNDecimals(seconds % 60, 3);
