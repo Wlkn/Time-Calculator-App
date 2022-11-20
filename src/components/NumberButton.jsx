@@ -7,7 +7,6 @@ export default function NumberButton({ value, setScreenState, setLastUsedBtnStat
             value={value}
             key={value}
             onClick={() => {
-                console.log(value);
                 setLastUsedBtnState("N");
 
                 setScreenState(state => {

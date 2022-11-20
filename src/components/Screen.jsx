@@ -1,15 +1,13 @@
 import React from "react";
-import useFitText from "use-fit-text";
 import "./Screen.css";
 
-function Screen({ value }) {
-    const { fontSize, ref } = useFitText({ minFontSize: 100 });
+function Screen({ value, onClick }) {
 
     return (
         <div
             className="screen"
-            ref={ref}
-            style={{ fontSize, height: 100, border: "1px solid #ccc" }}
+            style={{ fontSize: "calc(5vh + 5vw) ", border: "1px solid #ccc" }}
+            onClick={onClick}
         >
             {value}
         </div>

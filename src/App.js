@@ -16,8 +16,7 @@ function App() {
 
     
     const timeBtns = ["H", "M", "S"].map((e) => {
-        console.log(e);
-        return new TimeButton({ value: e, setLastUsedBtnState });
+        return new TimeButton({ value: e, setScreenState, setLastUsedBtnState });
     });
     const operatorBtns = ["÷", "×", "-", "+"].map(
         (e) => new OperatorButton({ value: e, setScreenState, setLastUsedBtnState })
@@ -39,11 +38,9 @@ function App() {
     return (
         <CalcProvider>
             <Wrapper>
-                <Screen value={screenState}/>
+                <Screen value={screenState} onClick={()=>{setScreenState("0")}}/>
                 <ButtonBox>
-                    {btnValues.flat().map((btn) => {
-                        return btn;
-                    })}
+                    {btnValues.flat()}
                 </ButtonBox>
             </Wrapper>
         </CalcProvider>
