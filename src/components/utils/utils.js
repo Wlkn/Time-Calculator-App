@@ -41,9 +41,7 @@ function evalBigTimeEquation(string) {
 
     let rawEquation = membersInSec.replaceAll("×", "*").replaceAll("÷", "/");
 
-    /** Using capture with regex, divide two terms when they are around ÷ */
     let adjustedEquation = rawEquation.replace(/(\d+)(\s*\/\s*)(\d+)/g, (match, p1, p2, p3) => {
-        //TODO changer equation pour que ça capture les temps et déplacer en début de fonction
         return `${p1 / p3}`;
     });
 
