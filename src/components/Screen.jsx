@@ -1,15 +1,20 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import "./Screen.css";
+import useFitText from "use-fit-text";
 
-function Screen({ value, onClick }) {
-
+function Screen({ value, onSlideChange }) {
+    const { fontSize, ref } = useFitText({ maxFontSize: 1000 });
     return (
-        <div
-            className="screen"
-            style={{ fontSize: "calc(5vh + 5vw) ", border: "1px solid #ccc" }}
-            onClick={onClick}
-        >
-            {value}
+        <div className="screen">
+            <Swiper loop={true} onReachEnd={onSlideChange} spaceBetween={400}>
+                <SwiperSlide>
+                    <div className="screen" ref={ref} style={{ fontSize }}>
+                        {value}
+                    </div>
+                </SwiperSlide>
+            </Swiper>
         </div>
     );
 }

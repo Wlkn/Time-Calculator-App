@@ -1,14 +1,16 @@
 .screen {
-    height: 100px;
+    height: 130px;
     margin-bottom: 10px;
     padding:  10px;
-    background-color: #4357692d;
+    /* background-color: #4357692d; */
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    text-align: end;
     color: white;
     font-weight: bold;
     box-sizing: border-box;
     
 }
+
+/* .screen:hover {
+    background-color: #50606e2d;
+} */

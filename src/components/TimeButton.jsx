@@ -15,10 +15,10 @@ export default function TimeButton({ value, setScreenState, setLastUsedBtnState 
                 return [...splittedEquation, convertHoursToHHMMSS(lastEquationMember)].join(" ");
                 break;
             case "M":
-                return  [...splittedEquation, convertMinutesToHHMMSS(lastEquationMember)].join(" ");
+                return [...splittedEquation, convertMinutesToHHMMSS(lastEquationMember)].join(" ");
                 break;
             case "S":
-                return  [...splittedEquation, convertSecondsToHHMMSS(lastEquationMember)].join(" ");
+                return [...splittedEquation, convertSecondsToHHMMSS(lastEquationMember)].join(" ");
                 break;
             default:
                 break;
@@ -32,14 +32,16 @@ export default function TimeButton({ value, setScreenState, setLastUsedBtnState 
             key={value}
             onClick={() => {
                 setLastUsedBtnState(lastUsedBtnState => {
-                    setScreenState(
-                        state =>
+                    if (lastUsedBtnState === "N") {
+                        setScreenState(state =>
                             convertLastEquationMember(
                                 lastUsedBtnState === "O"
                                     ? state.substring(0, state.length - 3)
                                     : state
                             )
-                    );
+                        );
+                    }
+
                     return "T";
                 });
             }}

@@ -19,12 +19,23 @@ function stringTimeToSeconds(string) {
 
 function evalBigTimeEquation(string) {
     let members = string.split(" ");
+    if (members.length === 1) return string;
 
     members = members.map(e => (/\+|-|÷|×/g.test(e) ? e : stringTimeToSeconds(e))).join(" ");
 
-    const isTimeResult = string.includes(":");
+    const isTimeResult =
+        /(\+|-|×) (\d+):/g.test(string) ||
+        /:(\d+) (\+|-|×)/g.test(string) ||
+        /:(\d+) ÷ (\d+)(?!:)/g.test(string);
 
-    const result = eval(members.replaceAll("×", "*").replaceAll("÷", "/"));
+    let rawEquation = members.replaceAll("×", "*").replaceAll("÷", "/");
+
+    /** Using capture with regex, divide two terms when they are around ÷ */
+    let adjustedEquation = rawEquation.replace(/(\d+)(\s*\/\s*)(\d+)/g, (match, p1, p2, p3) => {
+        return `${p1 / p3}`;
+    });
+
+    const result = eval(adjustedEquation);
 
     return isTimeResult ? convertSecondsToHHMMSS(result) : result;
 }

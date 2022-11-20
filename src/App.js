@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ButtonBox from "./components/ButtonBox.jsx";
-import { CalcProvider } from "./components/CalculatorContext.jsx";
 import EqualButton from "./components/EqualButton.jsx";
 import NumberButton from "./components/NumberButton.jsx";
 import OperatorButton from "./components/OperatorButton.jsx";
@@ -36,14 +35,12 @@ function App() {
 
 
     return (
-        <CalcProvider>
             <Wrapper>
-                <Screen value={screenState} onClick={()=>{setScreenState("0")}}/>
+                <Screen value={screenState} onSlideChange={()=>{setScreenState("0")}}/>
                 <ButtonBox>
                     {btnValues.flat()}
                 </ButtonBox>
             </Wrapper>
-        </CalcProvider>
     );
 }
 export default App;
