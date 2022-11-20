@@ -13,13 +13,13 @@ export default function TimeButton({ value, setScreenState, setLastUsedBtnState 
         switch (value) {
             case "H":
                 return [...splittedEquation, convertHoursToHHMMSS(lastEquationMember)].join(" ");
-                break;
+
             case "M":
                 return [...splittedEquation, convertMinutesToHHMMSS(lastEquationMember)].join(" ");
-                break;
+
             case "S":
                 return [...splittedEquation, convertSecondsToHHMMSS(lastEquationMember)].join(" ");
-                break;
+
             default:
                 break;
         }

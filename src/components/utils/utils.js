@@ -1,6 +1,7 @@
 // 2:30:50 -> 2*60*60 + 30*60 + 50 = 9000
 // 35:30 -> 35*60 + 30 = 2130
 function stringTimeToSeconds(string) {
+    string = "" + string;
     const timeArr = string.split(":");
 
     let hours = 0,
@@ -21,17 +22,29 @@ function evalBigTimeEquation(string) {
     let members = string.split(" ");
     if (members.length === 1) return string;
 
-    members = members.map(e => (/\+|-|÷|×/g.test(e) ? e : stringTimeToSeconds(e))).join(" ");
+    for (let i = 0; i < members.length; i++) {
+        if (members[i] === "÷" && [members[i + 1], members[i - 1]].every(e => e.includes(":"))) {
+            members[i - 1] = String(stringTimeToSeconds(members[i - 1]) / stringTimeToSeconds(members[i + 1]));
+            members.splice(i, 2);
+            i--;
+        }
+    }
+
+    let membersInSec = members.map(e => (/\+|-|÷|×/g.test(e) ? e : stringTimeToSeconds(e))).join(" ");
+
+    members = members.join(" ");
+    console.log(`members`, members);
 
     const isTimeResult =
-        /(\+|-|×) (\d+):/g.test(string) ||
-        /:(\d+) (\+|-|×)/g.test(string) ||
-        /:(\d+) ÷ (?!((\d+):))/g.test(string);
+        /(\+|-|×) (\d+):/g.test(members) ||
+        /:(\d+) (\+|-|×)/g.test(members) ||
+        /:(\d+) ÷ (?!((\d+):))/g.test(members);
 
-    let rawEquation = members.replaceAll("×", "*").replaceAll("÷", "/");
+    let rawEquation = membersInSec.replaceAll("×", "*").replaceAll("÷", "/");
 
     /** Using capture with regex, divide two terms when they are around ÷ */
     let adjustedEquation = rawEquation.replace(/(\d+)(\s*\/\s*)(\d+)/g, (match, p1, p2, p3) => {
+        //TODO changer equation pour que ça capture les temps et déplacer en début de fonction
         return `${p1 / p3}`;
     });
 
