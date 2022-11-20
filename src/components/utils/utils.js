@@ -37,7 +37,7 @@ function evalBigTimeEquation(string) {
 
     const result = eval(adjustedEquation);
 
-    return isTimeResult ? convertSecondsToHHMMSS(result) : result;
+    return isTimeResult ? convertSecondsToHHMMSS(result) : "" + result;
 }
 
 function convertSecondsToHHMMSS(seconds) {
