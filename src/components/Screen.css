@@ -8,7 +8,8 @@
     color: white;
     font-weight: bold;
     box-sizing: border-box;
-    
+    -webkit-user-select: none; 
+    user-select: none; 
 }
 
 /* .screen:hover {

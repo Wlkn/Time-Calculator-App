@@ -8,7 +8,7 @@ function Screen({ value, onSlideChange }) {
     const { fontSize, ref } = useFitText({ maxFontSize: 1000 });
     return (
         <div className="screen">
-            <Swiper loop={true} onReachEnd={onSlideChange} spaceBetween={400}>
+            <Swiper loop={true} onSlideChangeTransitionEnd={onSlideChange} spaceBetween={400}>
                 <SwiperSlide>
                     <div className="screen" ref={ref} style={{ fontSize }}>
                         {value}

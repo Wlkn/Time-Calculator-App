@@ -26,7 +26,7 @@ function evalBigTimeEquation(string) {
     const isTimeResult =
         /(\+|-|×) (\d+):/g.test(string) ||
         /:(\d+) (\+|-|×)/g.test(string) ||
-        /:(\d+) ÷ (\d+)(?!:)/g.test(string);
+        /:(\d+) ÷ (?!((\d+):))/g.test(string);
 
     let rawEquation = members.replaceAll("×", "*").replaceAll("÷", "/");
 
