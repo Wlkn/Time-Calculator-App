@@ -33,7 +33,6 @@ function evalBigTimeEquation(string) {
     let membersInSec = members.map(e => (/\+|-|÷|×/g.test(e) ? e : stringTimeToSeconds(e))).join(" ");
 
     members = members.join(" ");
-    console.log(`members`, members);
 
     const isTimeResult =
         /(\+|-|×) (\d+):/g.test(members) ||
