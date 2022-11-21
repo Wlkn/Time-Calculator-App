@@ -1,5 +1,5 @@
 import Button from "./Button";
-import { evalBigTimeEquation } from "./utils/utils";
+import { evalBigTimeEquation } from "../../utils/utils";
 
 export default function EqualButton({ setScreenState, setLastUsedBtnState }) {
     return (

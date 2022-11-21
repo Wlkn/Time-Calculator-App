@@ -1,11 +1,11 @@
 import { useState } from "react";
 import ButtonBox from "./components/ButtonBox.jsx";
-import EqualButton from "./components/EqualButton.jsx";
-import NumberButton from "./components/NumberButton.jsx";
-import OperatorButton from "./components/OperatorButton.jsx";
+import EqualButton from "./components/Buttons/EqualButton.jsx";
+import NumberButton from "./components/Buttons/NumberButton.jsx";
+import OperatorButton from "./components/Buttons/OperatorButton.jsx";
 import Screen from "./components/Screen.jsx";
-import TimeButton from "./components/TimeButton.jsx";
-import Wrapper from "./components/Wrapper.js";
+import TimeButton from "./components/Buttons/TimeButton.jsx";
+import Wrapper from "./components/Wrapper.jsx";
 
 
 

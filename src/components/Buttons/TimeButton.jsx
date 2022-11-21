@@ -4,7 +4,7 @@ import {
     convertSecondsToHHMMSS,
     convertMinutesToHHMMSS,
     convertHoursToHHMMSS,
-} from "./utils/utils";
+} from "../../utils/utils";
 
 export default function TimeButton({ value, setScreenState, setLastUsedBtnState }) {
     const convertLastEquationMember = equationString => {
