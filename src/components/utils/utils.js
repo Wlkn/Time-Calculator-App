@@ -20,7 +20,10 @@ function stringTimeToSeconds(string) {
 
 function evalBigTimeEquation(string) {
     let members = string.split(" ");
-    if (members.length === 1) return string;
+    if (members.length === 1) {
+        if(members[0].includes(":")) return convertSecondsToHHMMSS(stringTimeToSeconds(members[0]));
+        return string;
+    };
 
     for (let i = 0; i < members.length; i++) {
         if (members[i] === "÷" && [members[i + 1], members[i - 1]].every(e => e.includes(":"))) {
@@ -36,7 +39,7 @@ function evalBigTimeEquation(string) {
     }
 
     let membersInSec = members
-        .map(e => (/\+|-|÷|×/g.test(e) ? e : stringTimeToSeconds(e)))
+        .map(e => (/\+|-(?!(\d+))|÷|×/g.test(e) ? e : stringTimeToSeconds(e)))
         .join(" ");
 
     members = members.join(" ");
@@ -48,11 +51,11 @@ function evalBigTimeEquation(string) {
 
     let rawEquation = membersInSec.replaceAll("×", "*").replaceAll("÷", "/");
 
-    let adjustedEquation = rawEquation.replace(/(\d+)(\s*\/\s*)(\d+)/g, (match, p1, p2, p3) => {
-        return `${p1 / p3}`;
-    });
+    // let adjustedEquation = rawEquation.replace(/(\d+)(\s*\/\s*)(\d+)/g, (match, p1, p2, p3) => {
+    //     return `${p1 / p3}`;
+    // });
 
-    const result = eval(adjustedEquation);
+    const result = eval(rawEquation);
 
     return isTimeResult ? convertSecondsToHHMMSS(result) : "" + result;
 }

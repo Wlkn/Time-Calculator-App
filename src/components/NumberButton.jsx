@@ -7,37 +7,50 @@ export default function NumberButton({ value, setScreenState, setLastUsedBtnStat
             value={value}
             key={value}
             onClick={() => {
-                setLastUsedBtnState("N");
-
                 setScreenState(state => {
-                    if (state[state.length - 1] === "0") {
-                        return state.slice(0, state.length - 1) + value;
-                    } else if (state[state.length - 2] === "0") {
-                        return state.slice(0, state.length - 2) + state[state.length - 1] + value;
-                    } else if (state[state.length - 3] === ":" && state[state.length - 4] === "0") {
-                        return (
-                            state.slice(0, state.length - 4) +
-                            state[state.length - 2] +
-                            ":" +
-                            state[state.length - 1] +
-                            value
-                        );
-                    } else if (state[state.length - 3] === ":" && state[state.length - 5] === "0") {
-                        return (
-                            state.slice(0, state.length - 5) +
-                            state[state.length - 4] +
-                            state[state.length - 2] +
-                            ":" +
-                            state[state.length - 1] +
-                            value
-                        );
-                    } else {
-                        let pointAlreadyUsed = state.includes(".");
-                        return (!pointAlreadyUsed && value === ".") || value !== "."
-                            ? state + value
-                            : state;
+                    state = String(state);
+                    let pointAlreadyUsed = state.includes(".");
+
+                    if (!pointAlreadyUsed && value === ".") return String(state + value);
+                    if (state === "0" && value !== ".") return String(value);
+
+                    let lastEquationMember = state.split(" ").slice(-1)[0];
+                    let lastEquationIsTime = lastEquationMember.includes(":");
+                    lastEquationMember += value;
+
+                    if (lastEquationIsTime) {
+                        let needToShift = lastEquationMember.split(":").slice(-1)[0].length > 2;
+                        if (needToShift) {
+                            let positionOfFirstCollon = lastEquationMember.indexOf(":");
+                            if (lastEquationMember[positionOfFirstCollon + 1] === "0") {
+                                lastEquationMember =
+                                    lastEquationMember.slice(0, positionOfFirstCollon + 1) +
+                                    lastEquationMember.slice(positionOfFirstCollon + 2);
+
+                                // shift last collon is in form hh:mm:ss
+                                if (lastEquationMember.split(":").length === 3) {
+                                    let positionOfLastCollon = lastEquationMember.lastIndexOf(":");
+                                    lastEquationMember =
+                                        lastEquationMember.slice(0, positionOfLastCollon) +
+                                        lastEquationMember.charAt(positionOfLastCollon + 1) +
+                                        ":" +
+                                        lastEquationMember.slice(positionOfLastCollon + 2);
+                                }
+                            } else {
+                                lastEquationMember = state.split(" ").slice(-1)[0];
+                            }
+                        }
                     }
+                    let fullJoinedState = (
+                        state.split(" ").slice(0, -1).join(" ") +
+                        " " +
+                        lastEquationMember
+                    ).trim();
+
+                    return fullJoinedState;
                 });
+
+                setLastUsedBtnState("N");
             }}
         ></Button>
     );
