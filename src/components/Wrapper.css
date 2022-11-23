@@ -1,4 +1,9 @@
+:root {
+    --MARGIN-SIZE: 20px;
+}
+
 .wrapper {
+    border-radius: 20px;
     position: absolute;
     max-width: 100%;
     height: auto;
@@ -6,6 +11,6 @@
     top: 0;
     right:0;
     bottom: 0;
-    margin: 20px 20px 20px 20px;
-    background: #0400ff;
+    margin: var(--MARGIN-SIZE) var(--MARGIN-SIZE) var(--MARGIN-SIZE) var(--MARGIN-SIZE);
+    background: #353090d2;
 }

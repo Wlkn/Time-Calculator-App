@@ -1,42 +1,42 @@
 .btn {
     border: none;
-    background-color: #6592fd;
-    /* font-size: 24px; */
-    color: rgb(255, 255, 255);
+    color: rgb(241, 241, 241);
     font-weight: bold;
     cursor: pointer;
     border-radius: 10px;
     outline: none;
     font-size: calc(2vh + 2vw);
-    -webkit-user-select: none; 
-    user-select: none; 
-
-
+    -webkit-user-select: none;
+    user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .btn:hover {
-    background-color: #5f59f7;
+    opacity: 85%;
 }
 
-.zero-btn {
-    grid-column: 1 / 3;
+.btn:active {
+    opacity: 70%;
 }
 
 .number-btn {
-    background-color: rgb(47, 174, 174);
+    background-color: #6592fd;
 }
 
 .operator-btn {
-    background-color: rgb(110, 174, 47);
+    background-color: #5f59f7;
 }
 
 .time-btn {
-    background-color: rgb(171, 82, 219);
+    background-color: #4741f6;
 }
 
 .equal-btn {
-    background-color: rgb(218, 99, 90);
+    background-color: #44c2fd;
+}
+
+.Remove-btn {
+    background-color: #f75959e7;
 }
