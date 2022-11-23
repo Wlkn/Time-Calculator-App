@@ -7,10 +7,11 @@
 }
 
 body {
-    height: 100%;
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #343090;
-    background-image: linear-gradient(315deg, #343090 0%, #6592fd 74%);
+    background-color: #150f8d;
+    background-image: linear-gradient(315deg, #acacac 0%, #086992 74%);
 }

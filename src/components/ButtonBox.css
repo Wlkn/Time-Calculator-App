@@ -1,5 +1,5 @@
 .buttonBox {
-    width: 98%;
+    width: 100%;
     margin: auto;
     height: calc(100% - 150px);
     display: grid;
