@@ -20,6 +20,8 @@ export default function RemoveButton({ setScreenState, setLastUsedBtnState }) {
                     if (state.slice(-1) === " ") {
                         console.log(`state: ${state}`);
                         return removeDigitOperator;
+                    } else if (state.length === 1) {
+                        setScreenState(0);
                     }
                     return removeDigitNumber;
                 });
