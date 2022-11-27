@@ -9,8 +9,9 @@
     height: auto;
     left: 0;
     top: 0;
-    right:0;
+    right: 0;
     bottom: 0;
-    margin: var(--MARGIN-SIZE) var(--MARGIN-SIZE) var(--MARGIN-SIZE) var(--MARGIN-SIZE);
+    margin: var(--MARGIN-SIZE) var(--MARGIN-SIZE) var(--MARGIN-SIZE)
+        var(--MARGIN-SIZE);
     background: #353090d2;
 }
