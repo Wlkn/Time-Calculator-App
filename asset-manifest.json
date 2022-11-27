@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Time-Calculator-App/static/css/main.863c9c2a.css",
+    "main.js": "/Time-Calculator-App/static/js/main.6a22da64.js",
+    "index.html": "/Time-Calculator-App/index.html",
+    "main.863c9c2a.css.map": "/Time-Calculator-App/static/css/main.863c9c2a.css.map",
+    "main.6a22da64.js.map": "/Time-Calculator-App/static/js/main.6a22da64.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.863c9c2a.css",
+    "static/js/main.6a22da64.js"
+  ]
+}
